@@ -6,7 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <!DOCTYPE html>
-<%@page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" isELIgnored="false" %>
+<%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" isELIgnored="false" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix='fmt' %>
 
@@ -17,6 +17,55 @@
 
 <script>
     function checkEmpty(id,name){
-        var value = $
+        var value = $("#"+id).val();
+        if(value.length == 0){
+            alert(name+"不能为空");
+            $("#"+id)[0].focus();
+            return false;
+        }
+        return true;
     }
+
+    function checkNumber(id,name) {
+        var value = $("#"+id).val();
+        if(value.length == 0){
+            alert(name+"不能为空");
+            $("#"+id).focus;
+            return false;
+        }
+        if(isNaN(value)){
+            alert(name+"必须是数字");
+            $("#"+id).focus;
+            return false;
+        }
+        return true;
+    }
+
+    function checkInt(id, name) {
+        var value = $("#" + id).val();
+        if (value.length == 0) {
+            alert(name + "不能为空");
+            $("#" + id)[0].focus();
+            return false;
+        }
+        if (parseInt(value)!=value){
+            alert(name+"必须是整数");
+            $("#"+id).focus;
+            return false;
+        }
+        return true;
+    }
+
+    $(function () {
+        $("a").click(function () {
+            var deleteLink = $(this).attr("deleteLink");
+            console.log("尝试删除"+deleteLink);
+            if("true"==deleteLink){
+                var confirmDelete = confirm("确定要删除链接吗？");
+                if (confirmDelete)
+                    return true;
+                return false;
+            }
+        })
+    })
 </script>

@@ -5,11 +5,11 @@
   Time: 13:54
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8" import="java.util.*"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@include file="/include/admin/adminHeader.jsp"%>
+<%@include file="/include/admin/adminNavigator.jsp"%>
 
-<c:set var="heros" value="塔姆,艾克;巴德|雷克赛!卡莉丝塔" />
 
-<c:forTokens items="${heros}" delims=",:;|!" var="hero">
-  <c:out value="${hero}" /> <br />
-</c:forTokens>
+<%@include file="/include/admin/adminFooter.jsp"%>
