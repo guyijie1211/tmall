@@ -66,13 +66,13 @@ public class Page {
         return last;
     }
 
-    public Boolean isHasPreviouse(){
-        if(0==start)
+    public boolean isHasPreviouse(){
+        if(start==0)
             return false;
         return true;
     }
 
-    public  Boolean isHasNext(){
+    public boolean isHasNext(){
         if(start==getLast())
             return false;
         return true;

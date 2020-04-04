@@ -45,5 +45,15 @@
         <url-pattern>/categoryServlet</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>PropertyServlet</servlet-name>
+        <servlet-class>tmall.servlet.PropertyServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>PropertyServlet</servlet-name>
+        <url-pattern>/propertyServlet</url-pattern>
+    </servlet-mapping>
+
 </web-app>
 
