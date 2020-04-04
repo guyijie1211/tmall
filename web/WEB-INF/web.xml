@@ -16,6 +16,16 @@
     </filter-mapping>
 
     <filter>
+        <filter-name>EncodingFilter</filter-name>
+        <filter-class>tmall.filter.EncodingFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>EncodingFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <filter>
         <filter-name>BackServletFilter</filter-name>
         <filter-class>tmall.filter.BackServletFilter</filter-class>
     </filter>

@@ -63,13 +63,11 @@ public abstract class BaseBackServlet extends HttpServlet {
             /*借助反射，调用对应的方法*/
             String method = (String) request.getAttribute("method");
 
-            System.out.println("method Servlet:"+method);//*************************************
 
             Method m = this.getClass().getMethod(method, javax.servlet.http.HttpServletRequest.class,
                     javax.servlet.http.HttpServletResponse.class,Page.class);
             String redirect = m.invoke(this,request, response,page).toString();
 
-            System.out.println("redirect:"+redirect);//***********************************************
 
             /*根据方法的返回值，进行相应的客户端跳转，服务端跳转，或者仅仅是输出字符串*/
 
