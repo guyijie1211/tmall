@@ -41,7 +41,16 @@ public class PropertyServlet extends BaseBackServlet {
 
     @Override
     public String update(HttpServletRequest request, HttpServletResponse response, Page page) {
-        return null;
+        int cid = Integer.parseInt(request.getParameter("cid"));
+        Category c = categoryDAO.get(cid);
+
+        int id = Integer.parseInt(request.getParameter("id"));
+        String name = request.getParameter("name");
+        Property p = propertyDAO.get(id);
+        p.setName(name);
+        p.setCategory(c);
+        propertyDAO.update(p);
+        return "@admin_property_list?cid="+c.getId();
     }
 
     @Override

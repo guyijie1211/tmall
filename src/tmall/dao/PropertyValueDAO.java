@@ -93,6 +93,35 @@ public class PropertyValueDAO {
         return bean;
     }
 
+    public PropertyValue get(int id) {
+        PropertyValue bean = new PropertyValue();
+
+        try (Connection c = DBUtil.getConnection(); Statement s = c.createStatement();) {
+
+            String sql = "select * from PropertyValue where id = " + id;
+
+            ResultSet rs = s.executeQuery(sql);
+
+            if (rs.next()) {
+                int pid = rs.getInt("pid");
+                int ptid = rs.getInt("ptid");
+                String value = rs.getString("value");
+
+                Product product = new ProductDAO().get(pid);
+                Property property = new PropertyDAO().get(ptid);
+                bean.setProduct(product);
+                bean.setProperty(property);
+                bean.setValue(value);
+                bean.setId(id);
+            }
+
+        } catch (SQLException e) {
+
+            e.printStackTrace();
+        }
+        return bean;
+    }
+
     public void init(Product p) {
         List<Property> pts= new PropertyDAO().list(p.getCategory().getId());
 
