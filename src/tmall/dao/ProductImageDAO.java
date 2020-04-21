@@ -30,7 +30,7 @@ public class ProductImageDAO {
 
     public void add(ProductImage bean){
         String sql = "insert into productimage values(null,?,?)";
-        try(Connection c = DBUtil.getConnection(); PreparedStatement ps = c.prepareStatement(sql);){
+        try(Connection c = DBUtil.getConnection(); PreparedStatement ps = c.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);){
             ps.setInt(1,bean.getProduct().getId());
             ps.setString(2,bean.getType());
             ps.execute();
@@ -48,7 +48,7 @@ public class ProductImageDAO {
 
     public void update(ProductImage bean){
         String sql = "update productimage set pid = ?,type = ? where id = ? ";
-        try(Connection c = DBUtil.getConnection();PreparedStatement ps = c.prepareStatement(sql);){
+        try(Connection c = DBUtil.getConnection();PreparedStatement ps = c.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);){
             ps.setInt(1,bean.getProduct().getId());
             ps.setString(2,bean.getType());
             ps.execute();
@@ -94,7 +94,7 @@ public class ProductImageDAO {
     public List<ProductImage> list(Product product,String type,int start,int count){
         List<ProductImage> beans = new ArrayList<ProductImage>();
         String sql = "select * from productimage where pid = ? and type = ? order by id desc limit ?,?";
-        try(Connection c = DBUtil.getConnection();PreparedStatement ps = c.prepareStatement(sql);){
+        try(Connection c = DBUtil.getConnection();PreparedStatement ps = c.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);){
             ps.setInt(1,product.getId());
             ps.setString(2,type);
             ps.setInt(3,start);
