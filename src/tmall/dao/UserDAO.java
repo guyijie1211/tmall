@@ -26,7 +26,7 @@ public class UserDAO {
 
     public void add(User bean){
         String sql = "insert into user values(null,?,?)";
-        try(Connection c = DBUtil.getConnection(); PreparedStatement ps = c.prepareStatement(sql);){
+        try(Connection c = DBUtil.getConnection(); PreparedStatement ps = c.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);){
             ps.setString(1,bean.getName());
             ps.setString(2,bean.getPassword());
             ps.execute();
@@ -117,10 +117,11 @@ public class UserDAO {
 
     public User get(String name){
         User bean = null;
-        try(Connection c = DBUtil.getConnection();Statement s =c.createStatement();){
-            String sql = "select * from user where name = "+name;
+        String sql = "select * from user where name = ?";
+        try(Connection c = DBUtil.getConnection();PreparedStatement ps = c.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);){
 
-            ResultSet rs = s.executeQuery(sql);
+            ps.setString(1,name);
+            ResultSet rs = ps.executeQuery();
             while(rs.next()){
                 bean = new User();
                 int id = rs.getInt(1);
@@ -143,12 +144,12 @@ public class UserDAO {
 
     public User get(String name,String password){
         User bean = null;
-        String sql = "select * from user where name = ?,password = ?";
+        String sql = "select * from user where name = ? and password = ?";
         try(Connection c = DBUtil.getConnection();PreparedStatement ps = c.prepareStatement(sql);){
             ps.setString(1,name);
             ps.setString(2,password);
 
-            ResultSet rs = ps.executeQuery(sql);
+            ResultSet rs = ps.executeQuery();
             while(rs.next()){
                 bean = new User();
                 int id = rs.getInt(1);
