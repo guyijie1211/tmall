@@ -3,6 +3,6 @@
 
 <%@include file="include/header.jsp"%>
 <%@include file="include/top.jsp"%>
-<%@include file="include/simpleSearch.jsp"%>
-<%@include file="include/login/registerPage.jsp"%>
+<%@include file="include/search.jsp"%>
+<%@include file="include/searchResultPage.jsp"%>
 <%@include file="include/footer.jsp"%>

@@ -2,6 +2,7 @@
          pageEncoding="UTF-8" isELIgnored="false"%>
 
 <script>
+
     $(function(){
         var stock = ${p.stock};
         $(".productNumberSetting").keyup(function(){

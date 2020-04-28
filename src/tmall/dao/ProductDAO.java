@@ -112,7 +112,7 @@ public class ProductDAO {
                 float promotePrice = rs.getFloat("promotePrice");
                 int stock = rs.getInt("stock");
                 int cid = rs.getInt("cid");
-                Date createDate = DateUtil.t2d(rs.getTimestamp("createDate"));
+                Date createDate = DateUtil.t2d( rs.getTimestamp("createDate"));
 
                 bean.setName(name);
                 bean.setSubTitle(subTitle);
@@ -134,7 +134,7 @@ public class ProductDAO {
     }
 
     public List<Product> list(int cid) {
-        return list(cid, 0, Short.MAX_VALUE);
+        return list(cid,0, Short.MAX_VALUE);
     }
 
     public List<Product> list(int cid, int start, int count) {
@@ -157,7 +157,7 @@ public class ProductDAO {
                 float orignalPrice = rs.getFloat("orignalPrice");
                 float promotePrice = rs.getFloat("promotePrice");
                 int stock = rs.getInt("stock");
-                Date createDate = DateUtil.t2d(rs.getTimestamp("createDate"));
+                Date createDate = DateUtil.t2d( rs.getTimestamp("createDate"));
 
                 bean.setName(name);
                 bean.setSubTitle(subTitle);
@@ -176,11 +176,9 @@ public class ProductDAO {
         }
         return beans;
     }
-
     public List<Product> list() {
-        return list(0, Short.MAX_VALUE);
+        return list(0,Short.MAX_VALUE);
     }
-
     public List<Product> list(int start, int count) {
         List<Product> beans = new ArrayList<Product>();
 
@@ -202,7 +200,7 @@ public class ProductDAO {
                 float orignalPrice = rs.getFloat("orignalPrice");
                 float promotePrice = rs.getFloat("promotePrice");
                 int stock = rs.getInt("stock");
-                Date createDate = DateUtil.t2d(rs.getTimestamp("createDate"));
+                Date createDate = DateUtil.t2d( rs.getTimestamp("createDate"));
 
                 bean.setName(name);
                 bean.setSubTitle(subTitle);
@@ -227,7 +225,6 @@ public class ProductDAO {
         for (Category c : cs)
             fill(c);
     }
-
     public void fill(Category c) {
         List<Product> ps = this.list(c.getId());
         c.setProducts(ps);
@@ -236,12 +233,12 @@ public class ProductDAO {
     public void fillByRow(List<Category> cs) {
         int productNumberEachRow = 8;
         for (Category c : cs) {
-            List<Product> products = c.getProducts();
-            List<List<Product>> productsByRow = new ArrayList<>();
-            for (int i = 0; i < products.size(); i += productNumberEachRow) {
-                int size = i + productNumberEachRow;
-                size = size > products.size() ? products.size() : size;
-                List<Product> productsOfEachRow = products.subList(i, size);
+            List<Product> products =  c.getProducts();
+            List<List<Product>> productsByRow =  new ArrayList<>();
+            for (int i = 0; i < products.size(); i+=productNumberEachRow) {
+                int size = i+productNumberEachRow;
+                size= size>products.size()?products.size():size;
+                List<Product> productsOfEachRow =products.subList(i, size);
                 productsByRow.add(productsOfEachRow);
             }
             c.setProductsByRow(productsByRow);
@@ -249,8 +246,8 @@ public class ProductDAO {
     }
 
     public void setFirstProductImage(Product p) {
-        List<ProductImage> pis = new ProductImageDAO().list(p, ProductImageDAO.type_single);
-        if (!pis.isEmpty())
+        List<ProductImage> pis= new ProductImageDAO().list(p, ProductImageDAO.type_single);
+        if(!pis.isEmpty())
             p.setFirstProductImage(pis.get(0));
     }
 

@@ -1,6 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" isELIgnored="false"%>
 
+<style>
+    div.loginInput input{
+        outline:none;
+    }
+</style>
+
 <div class="modal " id="loginModal" tabindex="-1" role="dialog" >
     <div class="modal-dialog loginDivInProductPageModalDiv">
         <div class="modal-content">

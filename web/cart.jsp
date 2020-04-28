@@ -4,5 +4,6 @@
 <%@include file="include/header.jsp"%>
 <%@include file="include/top.jsp"%>
 <%@include file="include/simpleSearch.jsp"%>
-<%@include file="include/login/registerPage.jsp"%>
+
+<%@include file="include/cart/cartPage.jsp"%>
 <%@include file="include/footer.jsp"%>
