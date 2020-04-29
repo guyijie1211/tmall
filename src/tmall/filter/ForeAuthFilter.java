@@ -34,7 +34,7 @@ public class ForeAuthFilter implements Filter{
         String contextPath=request.getServletContext().getContextPath();
 
         String[] noNeedAuthPage = new String[]{
-                "homepage",
+                "home",
                 "checkLogin",
                 "register",
                 "loginAjax",

@@ -31,18 +31,20 @@ public class User {
 
     //获取用户的匿名名称（评论时用的）
     public String getAnonymousName(){
-        if(null == name)
+        if(null==name)
             return null;
 
         if(name.length()<=1)
             return "*";
 
         if(name.length()==2)
-            return name.substring(0,1)+"*";
+            return name.substring(0,1) +"*";
 
-        char[] Aname = name.toCharArray();
-        for(int i = 1;i<Aname.length-1;i++)
-            Aname[i] = '*';
-        return Aname.toString();
+        char[] cs =name.toCharArray();
+        for (int i = 1; i < cs.length-1; i++) {
+            cs[i]='*';
+        }
+        return new String(cs);
+
     }
 }

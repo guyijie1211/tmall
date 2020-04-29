@@ -35,6 +35,20 @@
         <url-pattern>/*</url-pattern>
     </filter-mapping>
 
+    <servlet>
+        <servlet-name>ForeServlet</servlet-name>
+        <servlet-class>tmall.servlet.ForeServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ForeServlet</servlet-name>
+        <url-pattern>/foreServlet</url-pattern>
+    </servlet-mapping>
+
+
+
+
+
     <filter>
         <filter-name>TestFilter</filter-name>
         <filter-class>tmall.filter.TestFilter</filter-class>
@@ -115,15 +129,7 @@
         <url-pattern>/orderServlet</url-pattern>
     </servlet-mapping>
 
-    <servlet>
-        <servlet-name>ForeServlet</servlet-name>
-        <servlet-class>tmall.servlet.ForeServlet</servlet-class>
-    </servlet>
 
-    <servlet-mapping>
-        <servlet-name>ForeServlet</servlet-name>
-        <url-pattern>/foreServlet</url-pattern>
-    </servlet-mapping>
 
 </web-app>
 

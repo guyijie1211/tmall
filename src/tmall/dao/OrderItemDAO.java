@@ -37,7 +37,7 @@ public class OrderItemDAO {
     public void add(OrderItem bean) {
 
         String sql = "insert into OrderItem values(null,?,?,?,?)";
-        try (Connection c = DBUtil.getConnection(); PreparedStatement ps = c.prepareStatement(sql);) {
+        try (Connection c = DBUtil.getConnection(); PreparedStatement ps = c.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);) {
 
             ps.setInt(1, bean.getProduct().getId());
 

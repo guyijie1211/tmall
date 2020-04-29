@@ -37,7 +37,7 @@ public class ProductDAO {
     public void add(Product bean) {
 
         String sql = "insert into Product values(null,?,?,?,?,?,?,?)";
-        try (Connection c = DBUtil.getConnection(); PreparedStatement ps = c.prepareStatement(sql);) {
+        try (Connection c = DBUtil.getConnection(); PreparedStatement ps = c.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);) {
 
             ps.setString(1, bean.getName());
             ps.setString(2, bean.getSubTitle());
