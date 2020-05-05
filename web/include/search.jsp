@@ -9,7 +9,7 @@
 
 
 <a href="${contextPath}">
-    <img id="logo" src="../../img/site/logo.gif" class="logo">
+    <img id="logo" src="img/site/logo.gif" class="logo">
 </a>
 
 <form action="foresearch" method="post" >

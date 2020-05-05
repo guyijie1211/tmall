@@ -4,7 +4,7 @@
 <div class="categoryMenu">
 		<c:forEach items="${cs}" var="c">
 			<div cid="${c.id}" class="eachCategory">
-				<span ><img src="../../img/site/doge.png"></span>
+				<span ><img src="img/site/doge.png"></span>
 				<a href="forecategory?cid=${c.id}">
 					${c.name}
 				</a>
